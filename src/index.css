@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+header {
+  background-image: url('assets/bg-main-mobile.png');
+  height: 16rem;
+}
+header .target {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 60%;
+  height: 8.3rem;
+  border-radius: .4rem;
+}
+header .targetReverse {
+  background-image: url('assets/bg-card-back.png');
+
+}
+header .targetFront {
+  background-image: url('assets/bg-card-front.png');
+}
+
+header img {
+  width: 60%;
+  position: relative;
+}

@@ -1,17 +1,30 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import './App.css'
+import Form from './Form'
+import Header from './Header'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [ infoCard , setInfoCard ] = useState({
+    numeroTarjeta : '',
+    nombrePropietario : '',
+    mesVigencia : '',
+    anioVigencia : '',
+    cvc : ''
+  })
+  
   return (
     <div className="App">
-      <header>
-        <div className=" target targetReverse"></div>
-        <div className="target targetFront"></div>
-      </header>
+      <Header
+        infoCard = { infoCard }
+      />
 
-      <main></main>
+      <main>
+        <Form
+          infoCard = { infoCard }
+          setInfoCard = { setInfoCard }
+        />
+      </main>
     </div>
   )
 }

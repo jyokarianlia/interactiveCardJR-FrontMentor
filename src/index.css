@@ -1,31 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+:root{
+  --LinearGradientActiveInputBorder1 : hsl(249, 99%, 64%);
+  --LinearGradientActiveInputBorder2 : hsl(278, 94%, 30%) ;
+  --RedInputErrors: hsl(0, 100%, 66%);
+
+  --White: hsl(0, 0%, 100%);
+  --LightGrayishViolet: hsl(270, 3%, 87%);
+  --DarkGrayishViolet: hsl(279, 6%, 55%);
+  --VeryDarkViolet: hsl(278, 68%, 11%);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-size: 15px;
+  font-size: 18px;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 header {
   background-image: url('assets/bg-main-mobile.png');
-  height: 16rem;
+  height: 13rem;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 header .target {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 60%;
-  height: 8.3rem;
+  width: 73%;
+  height: 9rem;
   border-radius: .4rem;
+  color: var(--LightGrayishViolet);
 }
 header .targetReverse {
   background-image: url('assets/bg-card-back.png');
-
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10% 0 0 20%;
+}
+header .targetReverse p {
+  margin-right: 1.5rem;
+  font-size: .6rem;
 }
 header .targetFront {
   background-image: url('assets/bg-card-front.png');
+  margin: -19% 0 0 10%;
+  display: flex;
+  flex-direction: column;
+}
+header .target  .content {
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+header .target  .contentName {
+  justify-content: space-between;
+  padding: 1rem;
+}
+header .target  .contentName p {
+  font-size: .6rem;
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
 }
 
-header img {
-  width: 60%;
-  position: relative;
+.error {
+  height: 2rem;
+  color: red;
+  font-size: .6rem;
+  text-transform: capitalize;
+}
+
+main {
+  margin-top: 90%;
+  text-transform: uppercase;
+  padding: 0 2rem;
+  width: 100%;
+}
+main .divInputs {
+  margin: 1rem 0;
+}
+main label {
+  font-size: .8rem;
+}
+main input {
+  width: 100%;
+  padding: .6rem;
+  font-size: .8rem;
+}
+main .content {
+  width: 50%;
+}
+main .contentDate {
+  display: flex;
+  gap: .5rem;
+}
+main .contentDate .contentDateCadu {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+main .contentDate .contentDateCadu {
+  margin: .2rem 0;
+}
+main .contentDate .contentDateCadu .inputs {
+  display: flex;
+  gap: .5rem;
+  text-align: center;
+}
+main .divInputs .button {
+  background-color: var(--VeryDarkViolet);
+  color: var(--White);
+  border: none;
+  border-radius: .3rem;
+}
+main .divInputs .button:hover {
+  cursor: pointer;
+  background: linear-gradient( var(--LinearGradientActiveInputBorder1) , var(--LinearGradientActiveInputBorder2) );
 }

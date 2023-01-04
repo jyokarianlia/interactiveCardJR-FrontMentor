@@ -76,6 +76,9 @@ header .target  .contentName p {
   font-size: .6rem;
   text-transform: capitalize;
 }
+.inputError {
+  border-color: hsl(0, 100%, 66%);
+}
 
 main {
   margin-top: 90%;

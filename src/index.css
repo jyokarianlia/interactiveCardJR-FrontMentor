@@ -36,6 +36,12 @@ header .target {
   border-radius: .4rem;
   color: var(--LightGrayishViolet);
 }
+header .target .cardLogo {
+  padding: 1rem;
+}
+header .target .cardLogo img {
+  width: 26%;
+}
 header .targetReverse {
   background-image: url('assets/bg-card-back.png');
   display: flex;
@@ -117,7 +123,7 @@ main .contentDate .contentDateCadu .inputs {
   gap: .5rem;
   text-align: center;
 }
-main .divInputs .button {
+main  .button {
   background-color: var(--VeryDarkViolet);
   color: var(--White);
   border: none;
@@ -126,4 +132,64 @@ main .divInputs .button {
 main .divInputs .button:hover {
   cursor: pointer;
   background: linear-gradient( var(--LinearGradientActiveInputBorder1) , var(--LinearGradientActiveInputBorder2) );
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 18rem;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+.final img {
+  width: 25%;
+}
+.final h2 {
+  font-size: 2rem;
+}
+.final label {
+  text-transform: initial;
+  color: var(--DarkGrayishViolet);
+}
+.final button {
+  padding: .5rem 1.5rem;
+  width: 100%;
+  transition: all ease-in-out .5s;
+}
+.final button:hover {
+  background: linear-gradient( var(--LinearGradientActiveInputBorder1) , var(--LinearGradientActiveInputBorder2) );
+  cursor: pointer;
+  transition: all ease-in-out .5s;
+}
+
+@media (min-width: 700px) {
+ .App {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+  header {
+    position: relative;
+    width: 30vw;
+    height: 100vh;
+    background: url('./assets/bg-main-desktop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  header .targetFront {
+    position: absolute;
+    top: 11rem;
+    left: 10.5rem;
+  }
+  header .targetReverse {
+    position: absolute;
+    top: 15rem;
+    left: 13rem;
+  }
+  main {
+    margin-top: 0;
+    width: 40vw;
+    margin-right: 10vw;
+  }
 }

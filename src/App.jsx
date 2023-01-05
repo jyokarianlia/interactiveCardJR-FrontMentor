@@ -1,5 +1,6 @@
 import { useState , useEffect } from 'react'
 import './App.css'
+import Final from './Final'
 import Form from './Form'
 import Header from './Header'
 
@@ -12,6 +13,7 @@ function App() {
     anioVigencia : '',
     cvc : ''
   })
+  const [ formComplet , setFormComplet] = useState(false)
   
   return (
     <div className="App">
@@ -20,10 +22,18 @@ function App() {
       />
 
       <main>
-        <Form
-          infoCard = { infoCard }
-          setInfoCard = { setInfoCard }
-        />
+        { formComplet ?
+          <Final
+            setInfoCard = { setInfoCard }
+            setFormComplet = { setFormComplet }
+          />
+        :
+          <Form
+            infoCard = { infoCard }
+            setInfoCard = { setInfoCard }
+            setFormComplet = { setFormComplet }
+          />
+        }
       </main>
     </div>
   )

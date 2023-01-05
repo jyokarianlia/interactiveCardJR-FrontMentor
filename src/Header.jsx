@@ -1,3 +1,4 @@
+import imgCardLogo from './assets/card-logo.svg'
 
 const Header = ({ infoCard }) => {
 
@@ -7,6 +8,9 @@ const Header = ({ infoCard }) => {
           <p>{ infoCard.cvc == '' ? "0 0 0" : infoCard.cvc }</p>
         </div>
         <div className="target targetFront">
+            <div className='cardLogo'>
+                <img src={ imgCardLogo } alt="Imagen Card Logo" />
+            </div>
           <div className="content contentNumberTarget">
             <p>{ infoCard.numeroTarjeta == '' ? '0000 0000 0000 0000' : infoCard.numeroTarjeta}</p>
           </div>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Form = ({ infoCard , setInfoCard }) => {
+const Form = ({ infoCard , setInfoCard , setFormComplet }) => {
 
   const [ errorNombre , setErrorNombre ] = useState({ error : false , msj : '' })
   const [ errorNumeroTarjeta , setErrorNumeroarjeta ] = useState({ error : false , msj : '' })
@@ -22,56 +22,96 @@ const Form = ({ infoCard , setInfoCard }) => {
 
     //VALIDANDO FORMULARIO
     //Validando nombre del propietario
-    console.log()
-    if( infoCard.nombrePropietario == '' ) {  
+    let validPropietario = validandoPropietario( infoCard.nombrePropietario , letras )
+
+    //Validando # de tarjeta
+    let validTarjeta = validandoTarjeta( infoCard.numeroTarjeta , numeros )
+
+    //Validando vigencias
+    let validVigencia = validandoVigencia ( infoCard.anioVigencia , numeros)
+    let validVigencia2 = validandoVigencia2 ( infoCard.mesVigencia , numeros)
+
+    //Validando Cvc
+    let validCvc = validandoCvc( infoCard.cvc , numeros )
+
+    if ( validPropietario && validTarjeta && validVigencia && validVigencia2 &&  validCvc  ) {
+      setFormComplet( true )
+      }
+  }
+
+  const validandoPropietario = (propietario , letras) => {
+    if( propietario == '' ) {  
       setErrorNombre({ 'error' : true , 'msj' : "Can't be blank"})
+      return false
     } else { 
-      if( letras.test(infoCard.nombrePropietario) ) {
+      if( letras.test(propietario) ) {
         setErrorNombre({ 'error' : true , 'msj' : 'Only letters' })
+        return false
       } else {
         setErrorNombre( { 'error' : false , 'msj' : '' })
+        return true
       }
     }
-    //Validando # de tarjeta
-    const tarjeta = infoCard.numeroTarjeta.replace(/ /g, '')
+  }
+
+  const validandoTarjeta = (numTarjeta , numeros) => {
+    const tarjeta = numTarjeta.replace(/ /g, '')
     if( tarjeta.length < 16 || tarjeta.length > 16 ) { 
       setErrorNumeroarjeta({ 'error' : true , 'msj' : "Can't be blank , 16 numbers" })
+      return false
     } else { 
       if(numeros.test(tarjeta)) {
         setErrorNumeroarjeta({ 'error' : true , 'msj' : 'Wrong format, numbers only' })
+        return false
       } else {
         setErrorNumeroarjeta({ 'error' : false , 'msj' : '' }) 
+        return true
       }
     }
+  }
 
-    //Validando vigencias
-    if( infoCard.mesVigencia == '' ) { 
-      setErrorVigencia({ 'error' : true , 'msj' : "Can't be blank" })
-    } else if( numeros.test( infoCard.mesVigencia ) ) { 
-      setErrorVigencia({ 'error' : true , 'msj' : "only numbers, 01 - 12" }) 
-    } else if( infoCard.mesVigencia < 1 || infoCard.mesVigencia > 12 ) { 
-      setErrorVigencia({ 'error' : true , 'msj' : "Month invalid, 01 - 12" }) 
-    } else {
-      setErrorVigencia({ 'error' : false , 'msj' : '' }) 
-    }
-
-    if( infoCard.anioVigencia == '' ) { 
+  const validandoVigencia = ( anio , numeros) => {
+    if( anio == '' ) { 
       setErrorAnioVigencia({ 'error' : true , 'msj' : "Can't be blank year" })
-    } else if( numeros.test( infoCard.anioVigencia ) ) { 
+      return false
+    } else if( numeros.test( anio) ) { 
       setErrorAnioVigencia({ 'error' : true , 'msj' : "invalid year, only numbers" }) 
+      return false
     }  else { 
       setErrorAnioVigencia({ 'error' : false , 'msj' : '' }) 
+      return true
     }
+  }
 
-    //Validando Cvc
-    if ( infoCard.cvc == '') { 
+  const validandoVigencia2 = (mes , numeros) => {
+    if( mes == '' ) { 
+      setErrorVigencia({ 'error' : true , 'msj' : "Can't be blank" })
+      return false
+    } else if( numeros.test( mes) ) { 
+      setErrorVigencia({ 'error' : true , 'msj' : "only numbers, 01 - 12" }) 
+      return false
+    } else if( mes < 1 || mes> 12 ) { 
+      setErrorVigencia({ 'error' : true , 'msj' : "Month invalid, 01 - 12" }) 
+      return false
+    } else {
+      setErrorVigencia({ 'error' : false , 'msj' : '' }) 
+      return true
+    }  
+  }
+
+  const validandoCvc = (cvc , numeros) => {
+    if ( cvc == '') { 
       setErrorCvc({ 'error' : true , 'msj' : "Can't be blank" }) 
-    } else if ( numeros.test( infoCard.cvc ) ) { 
+      return false
+    } else if ( numeros.test( cvc ) ) { 
       setErrorCvc({ 'error' : true , 'msj' : 'Only numbers' }) 
-    } else if ( infoCard.cvc > 999 ) {
+      return false
+    } else if ( cvc > 999 ) {
       setErrorCvc({ 'error' : true , 'msj' : 'Invalid CVC, 3 digits' }) 
+      return false
     } else {
       setErrorCvc({ 'error' : false , 'msj' : '' })
+      return true
     }
   }
 
